@@ -1,0 +1,18 @@
+%{
+#include <stdio.h>
+%}
+%%
+[a - z|A - Z|0 - 9]* {printf("Valid Identifier");}
+if|else|while|switch|ch {printf("keyword");}
+[0 - 9]* {printf("digits");}
+.;
+% %
+int main()
+{
+printf("\n enter a string:");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
