@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<string.h>
+void S();
+void A();
+char input[75];
+int index=0;
+int flag=0;
+int match(char c) {
+    if (input[index] == c) {
+        index++;
+        return 1;
+    }
+    return 0;
+}
+void S() {
+    if (match('a')) {
+        S();
+        if (match('b')) {
+            flag = 1;
+        }
+    } else {
+        A();
+        if (flag == 0) {
+            printf("Second interpretation: S -> Ab\n");
+        }
+    }
+}
+void A() {
+    if (match('a')) {
+    }
+}
+int main() {
+    printf("Enter an input string: ");
+    scanf("%s", input);
+
+    S();
+
+    if (index == strlen(input) && flag == 1) {
+        printf("First interpretation: S -> aSb\n");
+    } else {
+        printf("Invalid input or no second interpretation found.\n");
+    }
+
+    return 0;
+}
